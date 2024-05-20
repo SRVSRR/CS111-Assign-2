@@ -23,6 +23,14 @@ void exit_message()
 int main()
 {
 	welcome_message();
+
+	ofstream outfile;
+	outfile.open("studentmarks.txt");
+	outfile.close();
+
+	ifstream infile;
+	infile.open("summary.txt");
+	infile.close();
 	
 	cout << endl;
 	
