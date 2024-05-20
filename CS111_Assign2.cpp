@@ -89,6 +89,26 @@ void fill_array(string file_name, int& rows, int student_id[], string student_na
 	}
 }
 
+void print_entire_list(int rows, int student_id[], student_name[], maths_marks[], science_marks[], english_marks[])
+{
+	cout << "\n The Entire List of Students:" << endl << endl;
+	cout << left << setw(15) << "ID#" << setw(10) << endl;
+	cout << left << setw(15) << "Name" << setw(15) << endl;
+	cout << left << setw(15) << "Maths" << setw(10) << endl;
+	cout << left << setw(15) << "Science" << setw(15) << endl;
+	cout << left << setw(15) << "English" << setw(15) << endl;
+	
+	for(int i = 0; i < rows; i++)
+	{
+		cout << left << setw(15) << student_id[i] << setw(10) << endl;
+		cout << left << setw(15) << student_name[i] << setw(15) << endl;
+		cout << left << setw(15) << maths_marks[i] << setw(10) << endl;
+		cout << left << setw(15) << science_marks[i] << setw(15) << endl;
+		cout << left << setw(15) << english_marks[i] << endl;	
+	}
+	
+}
+
 int main()
 {
 	int choice;
