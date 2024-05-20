@@ -29,7 +29,7 @@ int main()
 	outfile.close();
 
 	ifstream infile;
-	infile.open("studentmarks.txt");
+	infile.open("summary.txt");
 	infile.close();
 	
 	cout << endl;
