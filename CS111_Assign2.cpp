@@ -5,20 +5,30 @@
 
 using namespace std;
 
-int validate_input()
+int validate_input(int lower_limit, int upper_limit)
 {
-	const int LOWER_LIMIT = 1;
-	const int UPPER_LIMIT = 6;
     int input;
     cin >> input;
     
-    while(input < LOWER_LIMIT  || input > UPPER_LIMIT || cin.fail())
+    while(input < lower_limit  || input > upper_limit || cin.fail())
 	{
-        cin.clear();
-        string dummy;
-        cin >> dummy;
-        cout << "ERROR!. Please enter a number between 1-6 only" << endl;
-        cin >> input;
+		if (cin.fail())
+		{
+			cin.clear();
+			string dummy;
+			cin >> dummy;
+			cout << "ERROR!. Invalid option was detected" << endl;
+			cout << "Kindly enter a number" << endl;
+		}
+		
+		else if (input < lower_limit || input > upper_limit)
+		{
+			cin.clear();
+			cout << "ERROR!. Your choice is not in range" << endl;
+			cout << "Kindly enter a number between " << lower_limit << " and " << upper_limit << endl;
+		}
+		
+		cin >> input;
     }
     return input;
 }
@@ -106,9 +116,12 @@ void print_entire_list(int rows, int student_id[], student_name[], maths_marks[]
 		cout << left << setw(15) << science_marks[i] << setw(15) << endl;
 		cout << left << setw(15) << english_marks[i] << endl;	
 	}
-	
 }
 
+void print_by_id(int rows, int student_id[], student_name[], maths_marks[], science_marks[], english_marks[])
+{
+	
+}
 int main()
 {
 	int choice;
@@ -122,6 +135,8 @@ int main()
     const int PRINT_SORTED = 4;
     const int WRITE_REPORT = 5;
     const int EXIT_PROGRAM = 6;
+    const int FIRST_OPTION = 1;
+    const int LAST_OPTION = 6;
     
     bool continue_running = true;
     
@@ -133,6 +148,55 @@ int main()
     double english_marks[CAPACITY];
     
     welcome_message();
+    
+    while (continue_running)
+    {
+    	rows = 0;
+    	fill_array("studentmarks.txt", rows, student_id, student_name, maths_marks, science_marks, english_marks);
+    	
+    	cout << endl;
+    	
+    	cout << "Menu:" << endl;
+    	cout << "1) Print the Entire List" << endl;
+    	cout << "2) Print Details of Student Matching a Given ID" << endl;
+    	cout << "3) Calculate Total and Print Entire List with Total" << endl;
+    	cout << "4) Print List Sorted by Total" << endl;
+    	cout << "5) Write Report to file" << endl;
+    	cout << "6) Exit program" << endl;
+    	cout << "Enter your choice:";
+    	
+    	choice = validate_input(FIRST_OPTION, LAST_OPTION);
+    	
+    	if (choice == PRINT_LIST)
+    	{
+    		
+		}
+		
+		else if (choice == PRINT_DETAILS)
+		{
+			
+		}
+    	
+    	else if (choice == PRINT_TOTAL)
+    	{
+    		
+		}
+    	
+    	else if (choice == PRINT_SORTED)
+    	{
+    		
+		}
+		
+		else if (choice == WRITE_REPORT)
+		{
+			
+		}
+		
+		else if (choice == EXIT_PROGRAM)
+		{
+			
+		}
+	}
 	
 
     return 0;
