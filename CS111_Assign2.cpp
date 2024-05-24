@@ -99,7 +99,7 @@ void fill_array(string file_name, int& rows, int student_id[], string student_na
 	}
 }
 
-void print_entire_list(int rows, int student_id[], student_name[], maths_marks[], science_marks[], english_marks[])
+void print_entire_list(int rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
 	cout << "\n The Entire List of Students:" << endl << endl;
 	cout << left << setw(15) << "ID#" << setw(10) << endl;
@@ -118,7 +118,7 @@ void print_entire_list(int rows, int student_id[], student_name[], maths_marks[]
 	}
 }
 
-void print_by_id(int rows, int student_id[], student_name[], maths_marks[], science_marks[], english_marks[])
+void print_by_id(int rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
 	
 }
