@@ -120,8 +120,47 @@ void print_entire_list(int rows, int student_id[], string student_name[], double
 
 void print_by_id(int rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
+	int query_id;
+	bool data_exists = false;
 	
+	cout << "Kindly enter the ID number that you would like to search for:";
+	cin >> query_id;
+	while(cin.fail())
+	{
+		cin.clear();
+		string dummy;
+		cin >> dummy;
+		cout << "ERROR!. Invalid Input Detected" << endl;
+		cout << "Please enter numbers only" << endl;
+		cin >> query_id;
+	}
+	
+	cout << "Entire list of students:" << endl;
+	cout << left << setw(15) << "ID#" << setw(15) << endl;
+	cout << left << setw(15) << "Name#" << setw(15) << endl;
+	cout << left << setw(15) << "Maths" << setw(15) << endl;
+	cout << left << setw(15) << "Science" << setw(15) << endl;
+	cout << left << setw(15) << "English" << setw(15) << endl;
+	
+	for(int i = 0; i < rows; i++)
+	{
+		if (student_id[i] == query_id)
+		{
+			data_exists = true;
+			cout << left << setw(15) << student_id[i] << setw(15) << endl;
+			cout << left << setw(15) << student_name[i] << setw(15) << endl;
+			cout << left << setw(15) << maths_marks[i] << setw(15) << endl;
+			cout << left << setw(15) << science_marks[i] << setw(15) << endl;
+			cout << left << setw(15) << english_marks[i] << setw(15) << endl;
+		}
+	}
+	
+	if (!data_exists)
+	{
+		cout << "No students were found with the ID# " << query_id << endl;
+	}
 }
+
 int main()
 {
 	int choice;
