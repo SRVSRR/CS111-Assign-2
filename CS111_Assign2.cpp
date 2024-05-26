@@ -76,7 +76,7 @@ void program_start_quit(bool& continue_running)
 	}
 }
 
-void fill_array(string file_name, int& rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks)
+void fill_array(string file_name, int& rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
 	string remove_header;
 	
@@ -203,7 +203,6 @@ int main()
     	cout << "5) Write Report to file" << endl;
     	cout << "6) Exit program" << endl;
     	cout << "Enter your choice:";
-    	
     	choice = validate_input(FIRST_OPTION, LAST_OPTION);
     	
     	if (choice == PRINT_LIST)
