@@ -76,7 +76,7 @@ void program_start_quit(bool& continue_running)
 	}
 }
 
-void fill_array(string file_name, int& rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
+void fill_array(string file_name, int& rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
 	string remove_header;
 	
@@ -99,28 +99,28 @@ void fill_array(string file_name, int& rows, int student_id[], string student_na
 	}
 }
 
-void print_entire_list(int rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
+void print_entire_list(int rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
-	cout << "\n The Entire List of Students:" << endl << endl;
-	cout << left << setw(15) << "ID#" << setw(10) << endl;
-	cout << left << setw(15) << "Name" << setw(15) << endl;
-	cout << left << setw(15) << "Maths" << setw(10) << endl;
-	cout << left << setw(15) << "Science" << setw(15) << endl;
+	cout << "\n The Entire List of Students:" << endl;
+	cout << left << setw(15) << "ID#" << setw(10);
+	cout << left << setw(15) << "Name" << setw(15);
+	cout << left << setw(15) << "Maths" << setw(10);
+	cout << left << setw(15) << "Science" << setw(15);
 	cout << left << setw(15) << "English" << setw(15) << endl;
 	
 	for(int i = 0; i < rows; i++)
 	{
-		cout << left << setw(15) << student_id[i] << setw(10) << endl;
-		cout << left << setw(15) << student_name[i] << setw(15) << endl;
-		cout << left << setw(15) << maths_marks[i] << setw(10) << endl;
-		cout << left << setw(15) << science_marks[i] << setw(15) << endl;
+		cout << left << setw(15) << student_id[i] << setw(10);
+		cout << left << setw(15) << student_name[i] << setw(15);
+		cout << left << setw(15) << maths_marks[i] << setw(10);
+		cout << left << setw(15) << science_marks[i] << setw(15);
 		cout << left << setw(15) << english_marks[i] << endl;	
 	}
 }
 
-void print_by_id(int rows, int student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
+void print_by_id(int rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[])
 {
-	int query_id;
+	string query_id;
 	bool data_exists = false;
 	
 	cout << "Kindly enter the ID number that you would like to search for:";
@@ -135,11 +135,11 @@ void print_by_id(int rows, int student_id[], string student_name[], double maths
 		cin >> query_id;
 	}
 	
-	cout << "Entire list of students:" << endl;
-	cout << left << setw(15) << "ID#" << setw(15) << endl;
-	cout << left << setw(15) << "Name#" << setw(15) << endl;
-	cout << left << setw(15) << "Maths" << setw(15) << endl;
-	cout << left << setw(15) << "Science" << setw(15) << endl;
+	cout << "List of student(s) matching the given ID:" << endl;
+	cout << left << setw(15) << "ID#" << setw(15);
+	cout << left << setw(15) << "Name#" << setw(15);
+	cout << left << setw(15) << "Maths" << setw(15);
+	cout << left << setw(15) << "Science" << setw(15);
 	cout << left << setw(15) << "English" << setw(15) << endl;
 	
 	for(int i = 0; i < rows; i++)
@@ -147,14 +147,16 @@ void print_by_id(int rows, int student_id[], string student_name[], double maths
 		if (student_id[i] == query_id)
 		{
 			data_exists = true;
-			cout << left << setw(15) << student_id[i] << setw(15) << endl;
-			cout << left << setw(15) << student_name[i] << setw(15) << endl;
-			cout << left << setw(15) << maths_marks[i] << setw(15) << endl;
-			cout << left << setw(15) << science_marks[i] << setw(15) << endl;
-			cout << left << setw(15) << english_marks[i] << setw(15) << endl;
+			cout << left << setw(15) << student_id[i] << setw(15);
+			cout << left << setw(15) << student_name[i] << setw(15);
+			cout << left << setw(15) << maths_marks[i] << setw(15);
+			cout << left << setw(15) << science_marks[i] << setw(15);
+			cout << left << setw(15) << english_marks[i] << setw(15);
 		}
 	}
 	
+	cout << endl;
+
 	if (!data_exists)
 	{
 		cout << "No students were found with the ID# " << query_id << endl;
@@ -180,7 +182,7 @@ int main()
     bool continue_running = true;
     
     //Arrays for storing different categories of data
-    int student_id[CAPACITY];
+    string student_id[CAPACITY];
     string student_name[CAPACITY];
     double maths_marks[CAPACITY];
     double science_marks[CAPACITY];
@@ -207,12 +209,12 @@ int main()
     	
     	if (choice == PRINT_LIST)
     	{
-    		
+    		print_entire_list(rows, student_id, student_name, maths_marks, science_marks, english_marks);
 		}
 		
 		else if (choice == PRINT_DETAILS)
 		{
-			
+			print_by_id(rows, student_id, student_name, maths_marks, science_marks, english_marks);
 		}
     	
     	else if (choice == PRINT_TOTAL)
