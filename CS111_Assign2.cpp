@@ -127,7 +127,7 @@ void print_by_id(int rows, string student_id[], string student_name[], double ma
 	string query_id;
 	bool data_exists = false;
 	
-	cout << "Kindly enter the ID number that you would like to search for:";
+	cout << "Kindly enter the ID number that you would like to search. Example: S122243" << endl;
 	cin >> query_id;
 	while(cin.fail())
 	{
@@ -258,6 +258,27 @@ void bubbleSort(int rows, string student_id[], string student_name[], double mat
     }
 }
 
+void write_report(string file_name, int& rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[], double total_marks[])
+{	
+	ofstream write_file;
+	write_file.open(file_name);
+	
+	if(!write_file)
+	{
+		cout << "ERROR!. This file could not be found" << endl;
+	}
+	else
+	{
+		write_file << "ID#" << setw(10) << "Name" << setw(10) << "Maths" << setw(10) <<"Science" << setw(10) << " English" << setw(10) << "Total" << endl;
+
+		for(int i = 1; i < rows; i++){
+			write_file << student_id[i] << setw(10) << student_name[i] << setw(8) << maths_marks[i] << setw(8) << science_marks[i] << setw(8) << english_marks[i] << setw(8)<< total_marks[i] << endl;
+		}
+	}
+
+	write_file.close();
+}
+
 int main()
 {
 	int choice;
@@ -327,7 +348,7 @@ int main()
 		
 		else if (choice == WRITE_REPORT)
 		{
-			
+			write_report("summary.txt", rows, student_id, student_name, maths_marks, science_marks, english_marks, total_marks);	
 		}
 		
 		else if (choice == EXIT_PROGRAM)
