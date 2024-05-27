@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int validate_input(int lower_limit, int upper_limit)
+// Input validation for choice selection
+int validate_input(int lower_limit, int upper_limit) // perimeters to keep choices between 1 - 4
 {
     int input;
     cin >> input;
