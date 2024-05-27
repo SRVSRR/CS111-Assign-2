@@ -42,17 +42,20 @@ void welcome_message()
 }
 
 //Function to display exit message
-void exit_program()
+void end_program(bool& continue_running)
 {
-    cout << "+----------------------------------+\n";
-    cout << "| THANK YOU FOR USING THIS PROGRAM |\n"; 
-    cout << "+----------------------------------+\n";
+	continue_running = false;
+
+	cout << endl;
+	cout << "+-------------------------------------+\n";
+	cout << "|  Thank you for using this program!  |\n";
+	cout << "+-------------------------------------+\n";
 }
 
 void program_start_quit(bool& continue_running)
 {
 	char user_decision;
-	cout << "\n Enter S to start or Q to quit";
+	cout << "Enter S to start or Q to quit" << endl;
 	cin >> user_decision;
 	
 	while(user_decision != 'S' && user_decision != 's' && user_decision != 'Q' && user_decision != 'q')
@@ -131,7 +134,7 @@ void print_by_id(int rows, string student_id[], string student_name[], double ma
 		string dummy;
 		cin >> dummy;
 		cout << "ERROR!. Invalid Input Detected" << endl;
-		cout << "Please enter numbers only" << endl;
+		cout << "Please enter letter \"S\" with numbers only" << endl;
 		cin >> query_id;
 	}
 	
@@ -163,6 +166,28 @@ void print_by_id(int rows, string student_id[], string student_name[], double ma
 	}
 }
 
+void print_by_total(int rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[], double total_marks)
+{
+	cout << "\n The Entire List of Students with Total:" << endl;
+	cout << left << setw(15) << "ID#" << setw(10);
+	cout << left << setw(15) << "Name" << setw(15);
+	cout << left << setw(15) << "Maths" << setw(10);
+	cout << left << setw(15) << "Science" << setw(15);
+	cout << left << setw(15) << "English" << setw(15);
+	cout << left << setw(15) << "Total" << setw(15) << endl;
+	
+	for(int i = 0; i < rows; i++)
+	{
+		total_marks = maths_marks[i] + science_marks[i] + english_marks[i];
+		cout << left << setw(15) << student_id[i] << setw(10);
+		cout << left << setw(15) << student_name[i] << setw(15);
+		cout << left << setw(15) << maths_marks[i] << setw(10);
+		cout << left << setw(15) << science_marks[i] << setw(15);
+		cout << left << setw(15) << english_marks[i];	
+		cout << left << setw(15) << total_marks << endl;
+	}
+}
+
 int main()
 {
 	int choice;
@@ -187,8 +212,11 @@ int main()
     double maths_marks[CAPACITY];
     double science_marks[CAPACITY];
     double english_marks[CAPACITY];
+	double total_marks;
     
     welcome_message();
+
+	program_start_quit(continue_running);
     
     while (continue_running)
     {
@@ -219,7 +247,7 @@ int main()
     	
     	else if (choice == PRINT_TOTAL)
     	{
-    		
+    		print_by_total(rows, student_id, student_name, maths_marks, science_marks, english_marks, total_marks);
 		}
     	
     	else if (choice == PRINT_SORTED)
@@ -234,7 +262,7 @@ int main()
 		
 		else if (choice == EXIT_PROGRAM)
 		{
-			
+			end_program(continue_running);
 		}
 	}
 	
