@@ -1,8 +1,9 @@
-ID#      Name     Maths   Science   English     Total
-S123002       Bob      88    77.5      93   259.5
-S123003   Charlie      85    89.5      90   258.5
-S123004     David    92.5      81      86   258.5
-S123005       Eve      79    84.5      88   255.5
-S123006     Frank      80      90    85.5     254
-S123007     Grace    77.5      89      92     252
-S123008    Hannah    86.5      79    88.5   251.5
+ID#            Name           Maths          Science        English        Total          
+S123001        Alice          78.5           82             91.5           264.5          
+S123002        Bob            88             77.5           93             259.5          
+S123003        Charlie        85             89.5           90             258.5          
+S123004        David          92.5           81             86             258.5          
+S123005        Eve            79             84.5           88             255.5          
+S123006        Frank          80             90             85.5           254            
+S123007        Grace          77.5           89             92             252            
+S123008        Hannah         86.5           79             88.5           251.5          

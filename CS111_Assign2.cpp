@@ -190,7 +190,7 @@ void print_by_total(int rows, string student_id[], string student_name[], double
 }
 
 // Function to sort arrays based on total marks using Bubble Sort algorithm
-void bubbleSort(int rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[], double total_marks[]) 
+void print_sorted(int rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[], double total_marks[]) 
 {
     for (int i = 0; i < rows - 1; ++i) 
 	{
@@ -269,11 +269,14 @@ void write_report(string file_name, int& rows, string student_id[], string stude
 	}
 	else
 	{
-		write_file << "ID#" << setw(10) << "Name" << setw(10) << "Maths" << setw(10) <<"Science" << setw(10) << " English" << setw(10) << "Total" << endl;
+		write_file << left << setw(15) << "ID#" << setw(15) << "Name" << setw(15) << "Maths" << setw(15) <<"Science" << setw(15) << "English" << setw(15) << "Total" << endl;
 
-		for(int i = 1; i < rows; i++){
-			write_file << student_id[i] << setw(10) << student_name[i] << setw(8) << maths_marks[i] << setw(8) << science_marks[i] << setw(8) << english_marks[i] << setw(8)<< total_marks[i] << endl;
+		for(int i = 0; i < rows; i++)
+		{
+			write_file << left << setw(15) << student_id[i] << setw(15) << student_name[i] << setw(15) << maths_marks[i] << setw(15) << science_marks[i] << setw(15) << english_marks[i] << setw(15)<< total_marks[i] << endl;
 		}
+		
+		cout << "Report Successfully Generated to summary.txt" << endl;
 	}
 
 	write_file.close();
@@ -343,7 +346,7 @@ int main()
     	
     	else if (choice == PRINT_SORTED)
     	{
-    		bubbleSort(rows, student_id, student_name, maths_marks, science_marks, english_marks, total_marks);
+    		print_sorted(rows, student_id, student_name, maths_marks, science_marks, english_marks, total_marks);
 		}
 		
 		else if (choice == WRITE_REPORT)
