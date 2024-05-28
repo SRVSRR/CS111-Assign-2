@@ -85,7 +85,7 @@ void fill_array(string file_name, int& rows, string student_id[], string student
 	string remove_header;
 	
 	ifstream read_file;
-	read_file.open(file_name);
+	read_file.open(file_name.c_str());
 	
 	if(!read_file)
 	{
@@ -261,7 +261,7 @@ void print_sorted(int rows, string student_id[], string student_name[], double m
 void write_report(string file_name, int& rows, string student_id[], string student_name[], double maths_marks[], double science_marks[], double english_marks[], double total_marks[])
 {	
 	ofstream write_file;
-	write_file.open(file_name);
+	write_file.open(file_name.c_str());
 	
 	if(!write_file)
 	{
